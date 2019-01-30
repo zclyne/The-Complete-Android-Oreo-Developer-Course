@@ -31,6 +31,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), myFamily.get(position), Toast.LENGTH_SHORT).show();
             }
-        });
+        });sw
     }
 }
