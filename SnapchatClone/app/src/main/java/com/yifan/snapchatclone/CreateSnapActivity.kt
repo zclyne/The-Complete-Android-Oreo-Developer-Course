@@ -61,7 +61,18 @@ class CreateSnapActivity : AppCompatActivity() {
             Toast.makeText(this, "Upload Failed", Toast.LENGTH_SHORT).show()
         }.addOnSuccessListener {
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-            Toast.makeText(this, "Upload Success", Toast.LENGTH_SHORT).show()
+            imageRef.child("images/$imageName").downloadUrl.addOnSuccessListener { uri ->
+                Toast.makeText(this, "Upload Success", Toast.LENGTH_SHORT).show()
+                // move to ChooseUserActivity
+                val intent = Intent(this, ChooseUserActivity::class.java)
+                // send data to ChooseUserActivity
+                intent.putExtra("imageURL", uri.toString())
+                intent.putExtra("imageName", imageName)
+                intent.putExtra("message", messageEditText!!.text.toString())
+                startActivity(intent)
+            }.addOnFailureListener {
+                Toast.makeText(this, "Failed In Getting DownloadURL", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -107,5 +118,6 @@ class CreateSnapActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_snap)
 
         createSnapImageView = findViewById(R.id.createSnapImageView)
+        messageEditText = findViewById(R.id.messageEditText)
     }
 }
