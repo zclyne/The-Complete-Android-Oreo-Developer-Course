@@ -59,31 +59,32 @@ class SnapsActivity : AppCompatActivity() {
         snapsListView = findViewById(R.id.snapsListView)
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, emails)
         snapsListView?.adapter = adapter
-        FirebaseDatabase.getInstance().reference.child("users")
-                                                .child(auth.currentUser!!.uid)
-                                                .child("snaps")
-                                                .addChildEventListener(object: ChildEventListener {
-                                                    override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                                                        emails.add(p0.child("from").value as String)
-                                                        snaps.add(p0!!)
-                                                        adapter.notifyDataSetChanged()
-                                                    }
-                                                    override fun onCancelled(p0: DatabaseError) {}
-                                                    override fun onChildMoved(p0: DataSnapshot, p1: String?) {}
-                                                    override fun onChildChanged(p0: DataSnapshot, p1: String?) {}
-                                                    override fun onChildRemoved(p0: DataSnapshot) { // when the user hit the back button in ViewSnapActivity, the snap is removed from the database, and this function is called
-                                                        var index = 0
-                                                        for (snap: DataSnapshot in snaps) {
-                                                            if (snap.key == p0.key) { // if snap is the one that is deleted, remove it from the arraylist
-                                                                snaps.removeAt(index)
-                                                                emails.removeAt(index)
-                                                                break
-                                                            }
-                                                            index++
-                                                        }
-                                                        adapter.notifyDataSetChanged()
-                                                    }
-                                                })
+        FirebaseDatabase.getInstance().reference
+            .child("users")
+            .child(auth.currentUser!!.uid)
+            .child("snaps")
+            .addChildEventListener(object: ChildEventListener {
+                override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                    emails.add(p0.child("from").value as String)
+                    snaps.add(p0!!)
+                    adapter.notifyDataSetChanged()
+                }
+                override fun onCancelled(p0: DatabaseError) {}
+                override fun onChildMoved(p0: DataSnapshot, p1: String?) {}
+                override fun onChildChanged(p0: DataSnapshot, p1: String?) {}
+                override fun onChildRemoved(p0: DataSnapshot) { // when the user hit the back button in ViewSnapActivity, the snap is removed from the database, and this function is called
+                    var index = 0
+                    for (snap: DataSnapshot in snaps) {
+                        if (snap.key == p0.key) { // if snap is the one that is deleted, remove it from the arraylist
+                            snaps.removeAt(index)
+                            emails.removeAt(index)
+                            break
+                        }
+                        index++
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+            })
 
         // when an item of the listView is clicked
         snapsListView?.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
