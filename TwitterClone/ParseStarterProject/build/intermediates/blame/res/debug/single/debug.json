@@ -1404,6 +1404,10 @@
         "source": "C:\\Users\\ZYFIn\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.0.0.aar\\d6e6207732c8e710dbc5ce5dad31529e\\res\\layout\\notification_template_big_media_narrow.xml"
     },
     {
+        "merged": "C:\\Programming\\Android-Studio\\TwitterClone\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\layout_activity_post_tweet.xml.flat",
+        "source": "C:\\Programming\\Android-Studio\\TwitterClone\\ParseStarterProject\\src\\main\\res\\layout\\activity_post_tweet.xml"
+    },
+    {
         "merged": "C:\\Programming\\Android-Studio\\TwitterClone\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal.9.png.flat",
         "source": "C:\\Users\\ZYFIn\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.4.0.aar\\141dbb1c755bc5c703f8ab36304f5cce\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal.9.png"
     },

@@ -1057,6 +1057,7 @@ id cast_notification_id
 id center
 id chains
 id checkbox
+id chooseImageButton
 id chronometer
 id classic
 id collapseActionView
@@ -1087,6 +1088,7 @@ id end_padder
 id end_text
 id expand_activities_button
 id expanded_menu
+id feedImageView
 id feedsListView
 id forever
 id gone
@@ -1164,6 +1166,7 @@ id place_autocomplete_search_input
 id place_autocomplete_separator
 id plain
 id play_pause
+id postButton
 id production
 id progressBar
 id progress_circular
@@ -1242,6 +1245,7 @@ id toolbar
 id top
 id topPanel
 id tweet
+id tweetEditText
 id uniform
 id up
 id url
@@ -1289,6 +1293,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout activity_feed
 layout activity_main
+layout activity_post_tweet
 layout activity_users
 layout cast_expanded_controller_activity
 layout cast_help_text

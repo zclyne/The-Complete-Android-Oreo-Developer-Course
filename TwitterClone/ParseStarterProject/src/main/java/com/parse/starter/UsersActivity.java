@@ -48,37 +48,39 @@ public class UsersActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.tweet) { // post a new tweet
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Send a Tweet");
-            final EditText tweetEditText = new EditText(this);
-            builder.setView(tweetEditText);
-            builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Log.i("Info", tweetEditText.getText().toString());
-                    ParseObject tweet = new ParseObject("Tweet");
-                    tweet.put("tweet", tweetEditText.getText().toString());
-                    tweet.put("username", ParseUser.getCurrentUser().getUsername());
-                    tweet.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e == null) {
-                                Toast.makeText(UsersActivity.this, "Tweet sent!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(UsersActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Log.i("Info", "I don't wanna tweet!");
-                    dialogInterface.cancel(); // close the AlertDialog window
-                }
-            });
-            builder.show();
+            Intent intent = new Intent(getApplicationContext(), PostTweetActivity.class);
+            startActivity(intent);
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            builder.setTitle("Send a Tweet");
+//            final EditText tweetEditText = new EditText(this);
+//            builder.setView(tweetEditText);
+//            builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    Log.i("Info", tweetEditText.getText().toString());
+//                    ParseObject tweet = new ParseObject("Tweet");
+//                    tweet.put("tweet", tweetEditText.getText().toString());
+//                    tweet.put("username", ParseUser.getCurrentUser().getUsername());
+//                    tweet.saveInBackground(new SaveCallback() {
+//                        @Override
+//                        public void done(ParseException e) {
+//                            if (e == null) {
+//                                Toast.makeText(UsersActivity.this, "Tweet sent!", Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                Toast.makeText(UsersActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
+//                }
+//            });
+//            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    Log.i("Info", "I don't wanna tweet!");
+//                    dialogInterface.cancel(); // close the AlertDialog window
+//                }
+//            });
+//            builder.show();
         } else if (item.getItemId() == R.id.logout) { // logout
             ParseUser.logOut();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);

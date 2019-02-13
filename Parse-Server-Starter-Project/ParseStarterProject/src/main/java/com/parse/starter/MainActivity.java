@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
@@ -126,20 +127,22 @@ public class MainActivity extends AppCompatActivity {
 
       // Parse User
       // sign up a user
-//      ParseUser user = new ParseUser();
-//      user.setUsername("nick");
-//      user.setPassword("myPass");
-//      user.signUpInBackground(new SignUpCallback() {
-//          @Override
-//          public void done(ParseException e) {
-//              if (e == null) {
-//                  // OK
-//                  Log.i("Sign Up OK!", "We did it");
-//              } else {
-//                  e.printStackTrace();
-//              }
-//          }
-//      });
+      ParseUser.logOut();
+      ParseUser user = new ParseUser();
+      user.setUsername("nininickckck");
+      user.setPassword("myPass");
+      user.signUpInBackground(new SignUpCallback() {
+          @Override
+          public void done(ParseException e) {
+              if (e == null) {
+                  // OK
+                  Log.i("Sign Up OK!", "We did it");
+              } else {
+                  e.printStackTrace();
+                  Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+              }
+          }
+      });
 
       // login a user
 //      ParseUser.logInInBackground("nick", "myPass", new LogInCallback() {
@@ -153,14 +156,12 @@ public class MainActivity extends AppCompatActivity {
 //          }
 //      });
 
-      ParseUser.logOut();
-
       // check if there is a currently logged in user
-      if (ParseUser.getCurrentUser() != null) { // have a user logged in
-          Log.i("Signed In", ParseUser.getCurrentUser().getUsername());
-      } else {
-          Log.i("Not Luck", "Not signed in.");
-      }
+//      if (ParseUser.getCurrentUser() != null) { // have a user logged in
+//          Log.i("Signed In", ParseUser.getCurrentUser().getUsername());
+//      } else {
+//          Log.i("Not Luck", "Not signed in.");
+//      }
 
       // log a user out
 //      ParseUser.logOut();
